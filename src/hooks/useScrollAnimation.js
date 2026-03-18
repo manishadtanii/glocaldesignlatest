@@ -10,8 +10,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const useScrollAnimation = (canvasRef, framePreloader, totalFrames = 400) => {
+export const useScrollAnimation = (canvasRef, framePreloader, totalFrames = 361) => {
   const scrollTriggerRef = useRef(null);
+  const lastFrameRef = useRef(-1);
 
   useEffect(() => {
     if (!canvasRef.current || !framePreloader) return;
@@ -19,9 +20,15 @@ export const useScrollAnimation = (canvasRef, framePreloader, totalFrames = 400)
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
-    // Draw frame function
+    // Draw frame function with caching to avoid re-drawing same frame
     const drawFrame = (frameIndex) => {
-      const frame = framePreloader.getFrame(Math.floor(frameIndex));
+      const floorIndex = Math.floor(frameIndex);
+      
+      // Skip if already drawn this frame
+      if (lastFrameRef.current === floorIndex) return;
+      lastFrameRef.current = floorIndex;
+
+      const frame = framePreloader.getFrame(floorIndex);
       if (!frame) return;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -45,16 +52,14 @@ export const useScrollAnimation = (canvasRef, framePreloader, totalFrames = 400)
       ctx.drawImage(frame, dx, dy, dw, dh);
     };
 
-    // Proxy object for GSAP to animate
-    const airbnb = { frame: 0 };
-
-    // Create ScrollTrigger
+    // Create ScrollTrigger with both scrub and useRAF for smooth performance
     scrollTriggerRef.current = ScrollTrigger.create({
       trigger: document.body,
       start: "top top",
       // End matches the spacer div's height in Home.jsx
       end: () => `${2.7 * window.innerHeight} top`, 
-      scrub: 0.2, // Slightly more smoothing
+      scrub: 1.5, // No scrub delay - instant response to mouse/touchpad scroll
+      fastScrollEnd: true, // Improve performance on fast scroll
       onUpdate: (self) => {
         const frameIndex = self.progress * (totalFrames - 1);
         drawFrame(frameIndex);
@@ -63,6 +68,7 @@ export const useScrollAnimation = (canvasRef, framePreloader, totalFrames = 400)
          // Fix canvas sizing on refresh
          canvas.width = window.innerWidth;
          canvas.height = window.innerHeight;
+         lastFrameRef.current = -1; // Reset frame cache on resize
          // Draw the CORRECT frame for the current scroll position
          const frameIndex = self.progress * (totalFrames - 1);
          drawFrame(frameIndex);
