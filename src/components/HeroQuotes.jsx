@@ -38,15 +38,15 @@ const HeroQuotes = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: document.body,
-          start: "300vh top",
-          end: "400vh top",
+          start: "330vh top", // Delayed trigger so it starts later
+          end: "430vh top",   // Adjusted end point correspondingly
           scrub: 1,
         }
       });
 
-      // Reveal container first
+      // Reveal container first (starts from lower down now: y: 150 instead of 60)
       tl.fromTo(containerRef.current,
-        { opacity: 0, y: 60 },
+        { opacity: 0, y: 150 },
         { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
       );
 
