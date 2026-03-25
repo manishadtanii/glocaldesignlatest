@@ -79,10 +79,18 @@ const CARD_H = 420;
 
 const ProjectsCarousel = ({ subtitle }) => {
   const [activeIdx, setActiveIdx] = useState(2);
+  const [isMobile, setIsMobile] = useState(false);
   const isDragging = useRef(false);
   const dragStartX = useRef(0);
   const dragDelta = useRef(0);
   const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Helper to split text into letter spans without changing layout
   const splitLetters = (text) => {
@@ -250,22 +258,27 @@ const ProjectsCarousel = ({ subtitle }) => {
         <h2 style={{
           fontFamily: "'Lacroom', serif",
           fontWeight: 400,
-          fontSize: 'clamp(2rem, 5vw, 3.4rem)',
+          fontSize: isMobile ? 'clamp(1.8rem, 6vw, 2.5rem)' : 'clamp(2.5rem, 6vw, 4.2rem)',
           color: '#2b2b2b',
-          lineHeight: 1.1,
+          lineHeight: 1.05,
           marginBottom: '1rem',
         }}>
-          {splitLetters("Spaces We've Designed")}
+          {splitLetters("A Testament To Excellence")}
         </h2>
         <p style={{
           fontFamily: "'Urbanist', sans-serif",
-          fontWeight: 400,
-          fontSize: '1.0rem',
+          fontWeight: 300,
+          fontSize: isMobile ? '0.95rem' : '1.05rem',
           color: '#6b6b6b',
-          maxWidth: '380px',
+          maxWidth: '600px',
+          lineHeight: 1.6,
           margin: '0 auto',
         }}>
-          {splitLetters("A curated collection of spaces we've designed and brought to life with thoughtful detail.")}
+          {splitLetters("A curated collection of ")}
+          <span style={{ color: '#B2000A' }}>
+            {splitLetters("spaces we’ve designed")}
+          </span>
+          {splitLetters(" and brought to life with thoughtful detail.")}
         </p>
       </div>
 

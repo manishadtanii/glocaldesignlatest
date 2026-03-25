@@ -38,8 +38,8 @@ const HeroQuotes = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: document.body,
-          start: "210vh top",
-          end: "320vh top",
+          start: "300vh top",
+          end: "400vh top",
           scrub: 1,
         }
       });
@@ -73,8 +73,13 @@ const HeroQuotes = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-[2vh] left-0 w-full z-[0] pointer-events-none px-[6%]"
-      style={{ opacity: 0, willChange: 'opacity, transform', perspective: '1000px' }}
+      className="fixed bottom-0 left-0 w-full z-[0] pointer-events-none px-[6%] pt-32 pb-8"
+      style={{
+        opacity: 0,
+        willChange: 'opacity, transform',
+        perspective: '1000px',
+        background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%)'
+      }}
     >
       <div className="max-w-[1500px] mx-auto flex items-end justify-between">
 

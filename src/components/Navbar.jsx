@@ -514,7 +514,7 @@ const Navbar = () => {
           left: 0,
           right: 0,
           zIndex: 100,
-          padding: '1rem 2rem',
+          padding: '1.2rem 8vw',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -537,7 +537,7 @@ const Navbar = () => {
             src="/images/logo.png"
             alt="Glocal Design Logo"
             style={{
-              height: '42px',
+              height: '65px',
               width: 'auto',
               objectFit: 'contain',
               filter: logoFilter,
@@ -546,55 +546,32 @@ const Navbar = () => {
           />
         </div>
 
-        {/* Menu / Close Button */}
+        {/* Phone Button */}
         <div style={{ pointerEvents: 'auto' }}>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
+          <a
+            href="tel:+919166197371"
             style={{
-              width: '60px',
-              height: '60px',
-              borderRadius: '50%',
-              backgroundColor: 'transparent',
-              border: 'none',
-              cursor: 'pointer',
               display: 'flex',
-              flexDirection: 'column',
               alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              padding: '10px',
-              position: 'relative',
+              gap: '8px',
+              backgroundColor: '#323232', // Matches dark design
+              color: '#ffffff',
+              padding: '0.65rem 1.4rem',
+              borderRadius: '9999px',
+              fontFamily: "'Urbanist', sans-serif",
+              fontSize: '1rem',
+              fontWeight: 500,
+              textDecoration: 'none',
+              transition: 'background-color 0.3s ease, transform 0.3s ease',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
             }}
+            className="hover:scale-105 active:scale-95"
           >
-            {/* Three-line Hamburger Icon */}
-            <div 
-              style={{
-                width: '24px',
-                height: '2px',
-                backgroundColor: isOpen || logoTheme === 'light' || scrolled ? '#ffffff' : '#111111',
-                transition: 'transform 0.4s ease, background-color 0.4s ease',
-                transform: isOpen ? 'translateY(8px) rotate(45deg)' : 'none',
-              }}
-            />
-            <div 
-              style={{
-                width: '24px',
-                height: '2px',
-                backgroundColor: isOpen || logoTheme === 'light' || scrolled ? '#ffffff' : '#111111',
-                transition: 'opacity 0.4s ease, background-color 0.4s ease',
-                opacity: isOpen ? 0 : 1,
-              }}
-            />
-            <div 
-              style={{
-                width: '24px',
-                height: '2px',
-                backgroundColor: isOpen || logoTheme === 'light' || scrolled ? '#ffffff' : '#111111',
-                transition: 'transform 0.4s ease, background-color 0.4s ease',
-                transform: isOpen ? 'translateY(-8px) rotate(-45deg)' : 'none',
-              }}
-            />
-          </button>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+            <span>+91 91661 97371</span>
+          </a>
         </div>
       </nav>
 
