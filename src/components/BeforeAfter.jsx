@@ -60,7 +60,7 @@ const BeforeAfter = ({
           scrollTrigger: {
             trigger: section,
             start: 'top 80%',   // starts when image enters screen 
-            end: 'bottom 20%',  // finishes before it leaves
+            end: 'bottom 70%',  // finishes before it leaves
             scrub: 1,
             pin: false,         // NO GAP!
           },

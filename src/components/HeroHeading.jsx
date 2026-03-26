@@ -49,7 +49,7 @@ const HeroHeading = () => {
     >
       {/* Bottom Right Button (Decorative) */}
       <div 
-        className="absolute bottom-[9vh] right-[4vw] md:right-[5vw]"
+        className="absolute  bottom-[9vh] right-[4vw] md:right-[5vw] hidden md:block"
         style={{ pointerEvents: 'auto', zIndex: 50 }}
       >
         <button 

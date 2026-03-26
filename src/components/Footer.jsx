@@ -6,7 +6,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#FAF8F5] pt-40 pb-0 relative z-30 overflow-hidden w-full">
+    <footer className="bg-[#FAF8F5] pt-10 pb-0 relative z-30 overflow-hidden w-full">
       <div className="w-full max-w-[1500px] mx-auto px-6 md:px-16 lg:px-[8%] relative">
         
         {/* Main Flex Container */}
