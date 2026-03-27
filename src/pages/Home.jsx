@@ -18,24 +18,24 @@ import ServicesSection from '../components/ServicesSection';
 import SectionHeader from '../components/SectionHeader';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
-import LoadingScreen from '../components/LoadingScreen';
+// import LoadingScreen from '../components/LoadingScreen';
 
 const Home = () => {
   const [showScrollButton, setShowScrollButton] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadingProgress, setLoadingProgress] = useState(0);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [loadingProgress, setLoadingProgress] = useState(0);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleLoadingProgress = (progress) => {
-    setLoadingProgress(progress);
-    // Hide loading screen when fully loaded
-    if (progress >= 100) {
-      setTimeout(() => setIsLoading(false), 300);
-    }
-  };
+  // const handleLoadingProgress = (progress) => {
+  //   setLoadingProgress(progress);
+  //   // Hide loading screen when fully loaded
+  //   if (progress >= 100) {
+  //     setTimeout(() => setIsLoading(false), 300);
+  //   }
+  // };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +54,7 @@ const Home = () => {
   return (
     <div className="relative w-full overflow-x-hidden">
       {/* Loading Screen */}
-      <LoadingScreen isLoading={isLoading} progress={loadingProgress} />
+      {/* <LoadingScreen isLoading={isLoading} progress={loadingProgress} /> */}
 
       {/* Scroll To Top Button - Show only after frame sections */}
       {showScrollButton && (
@@ -75,7 +75,7 @@ const Home = () => {
       <Navbar />
 
       {/* Canvas background (fixed, behind everything) */}
-      <ScrollAnimationCanvas totalFrames={377} onLoadingProgress={handleLoadingProgress} />
+      <ScrollAnimationCanvas totalFrames={377} />
 
       {/* Hero Heading (positioned over canvas) */}
       <HeroHeading />
