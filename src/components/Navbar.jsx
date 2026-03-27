@@ -543,7 +543,7 @@ const Navbar = () => {
         {/* Logo */}
         <div style={{ pointerEvents: 'auto' }}>
           <img
-            src="/images/logo.png"
+            src="./images/logo.png"
             alt="Glocal Design Logo"
             style={{
               height: isMobile ? '32px' : '50px',

@@ -11,8 +11,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const BeforeAfter = ({
-  beforeImage = '/images/Modern.png',
-  afterImage = '/images/Modern 1.png',
+  beforeImage = './images/Modern.png',
+  afterImage = './images/Modern 1.png',
   beforeLabel = 'Before',
   afterLabel = 'After',
 }) => {
